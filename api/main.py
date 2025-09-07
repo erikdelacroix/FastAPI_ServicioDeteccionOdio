@@ -25,8 +25,6 @@ model_id = "erikcruzuc3m/model-multiclase-final"
 tokenizer = AutoTokenizer.from_pretrained(model_id)
 model = AutoModelForSequenceClassification.from_pretrained(model_id)
 
-# tokenizer = AutoTokenizer.from_pretrained(MODEL_DIR, use_fast=True)
-# model = AutoModelForSequenceClassification.from_pretrained(MODEL_DIR)
 clf = pipeline(
     "text-classification",
     model=model,
