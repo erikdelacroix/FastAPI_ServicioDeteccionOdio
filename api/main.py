@@ -5,6 +5,8 @@ from typing import List, Dict, Any
 import torch
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
 
+
+
 # === Config ===
 MODEL_DIR = "api/models_multiclase_final"
 LABELS = {
@@ -19,8 +21,12 @@ LABEL2ID = {v: k for k, v in LABELS.items()}
 device = 0 if torch.cuda.is_available() else -1
 
 # Carga del modelo/tokenizer
-tokenizer = AutoTokenizer.from_pretrained(MODEL_DIR, use_fast=True)
-model = AutoModelForSequenceClassification.from_pretrained(MODEL_DIR)
+model_id = "erikcruzuc3m/model-multiclase-final"
+tokenizer = AutoTokenizer.from_pretrained(model_id)
+model = AutoModelForSequenceClassification.from_pretrained(model_id)
+
+# tokenizer = AutoTokenizer.from_pretrained(MODEL_DIR, use_fast=True)
+# model = AutoModelForSequenceClassification.from_pretrained(MODEL_DIR)
 clf = pipeline(
     "text-classification",
     model=model,
